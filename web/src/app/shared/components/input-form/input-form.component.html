@@ -1,0 +1,16 @@
+<mat-form-field appearance="fill" class="form-field">
+  <mat-label *ngIf="label">{{ label }}</mat-label>
+  <input matInput [type]="type == 'password' ? (hide ? 'password' : 'text') : type" [disabled]="disabled" [formControl]="form" (input)="onChange($event.target.value)" />
+  <button *ngIf="type == 'password'" tabindex="-1" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Esconder a senha'"
+    [attr.aria-pressed]="hide">
+    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+  </button>
+  <mat-error *ngIf="errors?.required">Campo obrigatório</mat-error>
+  <mat-error *ngIf="errors?.confirmPassword">Confirmação de senha incorreta</mat-error>
+  <mat-error *ngIf="errors?.email">Informe um e-mail válido</mat-error>
+  <mat-error *ngIf="errors?.maxlength != null">Tamanho máximo permitido {{ errors?.maxlength.requiredLength }}
+    caracteres</mat-error>
+  <mat-error *ngIf="errors?.minlength != null">Tamanho mínimo permitido {{ errors?.minlength.requiredLength }}
+    caracteres</mat-error>
+</mat-form-field>
+

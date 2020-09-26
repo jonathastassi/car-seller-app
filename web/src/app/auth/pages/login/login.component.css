@@ -1,0 +1,14 @@
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-card-actions {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+}
+
+.m-16 {
+  margin: 16px !important;
+}

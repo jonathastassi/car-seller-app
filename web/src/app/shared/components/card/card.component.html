@@ -1,0 +1,6 @@
+<mat-card class="text-center">
+  <mat-card-title *ngIf="title">{{ title }}</mat-card-title>
+  <mat-card-subtitle *ngIf="subtitle">{{ subtitle }}</mat-card-subtitle>
+  <ng-content select="mat-card-content"></ng-content>
+  <ng-content select="mat-card-actions"></ng-content>
+</mat-card>

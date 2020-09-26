@@ -1,0 +1,8 @@
+<ng-container *ngFor="let row of data">
+  <ng-container
+     *ngIf="ItemTemplateRef"
+     [ngTemplateOutlet]="ItemTemplateRef"
+     [ngTemplateOutletContext]="{$implicit:row}"
+  >
+  </ng-container>
+</ng-container>
