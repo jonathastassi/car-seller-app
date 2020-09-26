@@ -1,1 +1,20 @@
-<p>car-detail works!</p>
+<mat-card class="example-card" >
+  <img mat-card-image [src]="row.images[0]?.path || '#'" [alt]="'Foto de ' + row.name" class="image-car">
+  <div class="label-price">{{ row.price | currency: 'BRL' }}</div>
+  <mat-card-header>
+    <mat-card-title style="display: flex; flex-direction: row;">
+      <h1>{{ row.name }}</h1>
+      <mat-chip-list aria-label="Cor do veículo" style="margin-left: 16px;">
+        <mat-chip selected [ngStyle]="{background: row.color}">&nbsp;</mat-chip>
+      </mat-chip-list>
+    </mat-card-title>
+    <mat-card-subtitle>
+      Ano: {{row.year}} <br>
+      Vendedor: {{ row.user.name }} <br>
+      Cidade: {{ row.user.city }}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions>
+    <a [routerLink]="['/cars/detail', row.id]" routerLinkActive="router-link-active"  mat-button>+ Detalhes</a>
+  </mat-card-actions>
+</mat-card>
