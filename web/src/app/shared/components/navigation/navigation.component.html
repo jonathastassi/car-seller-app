@@ -4,13 +4,16 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
+    <mat-nav-list *ngIf="!(user$ | async)">
       <a mat-list-item [routerLink]="['/auth/login']" routerLinkActive="router-link-active" >Entre ou Cadastre-se</a>
-
+      <a mat-list-item [routerLink]="['/cars/list']" routerLinkActive="router-link-active" >Ver anúncios</a>
+    </mat-nav-list>
+    <mat-nav-list *ngIf="(user$ | async) as user">
+      <mat-list-item>Olá {{ user.name }}</mat-list-item>
       <a mat-list-item href="#">Criar anúncio</a>
-      <a mat-list-item href="#">Meus anúncios</a>
-      <a mat-list-item href="#">Minha conta</a>
-      <a mat-list-item href="#">Sair</a>
+      <a mat-list-item [routerLink]="['/users/my-cars']" routerLinkActive="router-link-active" >Meus anúncios</a>
+      <a mat-list-item [routerLink]="['/users/my-account']" routerLinkActive="router-link-active" >Minha conta</a>
+      <button mat-list-item (click)="logout()">Sair</button>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

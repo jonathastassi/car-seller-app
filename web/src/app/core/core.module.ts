@@ -5,7 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../../environments/environment'
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RequestInterceptor } from './request.interceptor';
 
 @NgModule({
   declarations: [],
@@ -21,6 +22,13 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule,
     HttpClientModule,
     BrowserAnimationsModule,
+  ],
+   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestInterceptor,
+      multi: true
+    }
   ]
 })
 export class CoreModule { }

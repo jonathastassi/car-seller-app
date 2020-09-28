@@ -3,6 +3,8 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/users/services/user.service';
+import { User } from 'src/app/users/models/user';
 
 @Component({
   selector: 'app-navigation',
@@ -19,9 +21,17 @@ export class NavigationComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private router: Router) {}
+  user$: Observable<User>;
 
-  goToLogin(): void {
-    this.router.navigateByUrl('auth/login');
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private router: Router,
+    private userService: UserService
+    ) {
+      this.user$ = this.userService.getUser();
+    }
+
+  logout(): void {
+    this.userService.logout();
   }
 }

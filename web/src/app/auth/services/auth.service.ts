@@ -4,8 +4,8 @@ import { Login } from '../models/login';
 import { Register } from '../models/register';
 import { environment } from '../../../environments/environment';
 import { pluck, tap } from 'rxjs/operators';
-import { TokenService } from '../../auth/services/token.service';
 import { Observable } from 'rxjs';
+import { UserService } from '../../users/services/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private tokenService: TokenService
+    private userService: UserService
   ) { }
 
   makeLogin(model: Login): Observable<string> {
@@ -23,7 +23,7 @@ export class AuthService {
         pluck('accessToken'),
         tap((token: string) => {
           if (token) {
-            this.tokenService.setValue(token);
+            this.userService.setUser(token);
           }
         })
       )
@@ -35,7 +35,7 @@ export class AuthService {
         pluck('accessToken'),
         tap((token: string) => {
           if (token) {
-            this.tokenService.setValue(token);
+            this.userService.setUser(token);
           }
         })
       )

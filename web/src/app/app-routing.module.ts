@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: () => import('./cars/cars.module').then(m => m.CarsModule)
   },
   {
+    path: 'users',
+    loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
+  },
+  {
     path: "**",
     redirectTo: 'cars/list'
   },

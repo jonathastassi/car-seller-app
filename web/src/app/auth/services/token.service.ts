@@ -13,11 +13,16 @@ export class TokenService {
     localStorage.setItem(this.KEY_AUTH, token);
   }
 
-  getValue(): void {
-    localStorage.getItem(this.KEY_AUTH);
+  getValue(): string {
+    const token: string = localStorage.getItem(this.KEY_AUTH);
+    return token;
   }
 
   removeValue(): void {
     localStorage.removeItem(this.KEY_AUTH);
+  }
+
+  hasValue(): boolean {
+    return localStorage.getItem(this.KEY_AUTH) != null;
   }
 }
