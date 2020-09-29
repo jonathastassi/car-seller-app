@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { UserService } from './user.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-describe('UserService', () => {
+describe('O serviço UserService', () => {
   let service: UserService;
 
   beforeEach(() => {
@@ -13,7 +13,7 @@ describe('UserService', () => {
     service = TestBed.inject(UserService);
   });
 
-  it('should be created', () => {
+  it('Deve ser criado', () => {
     expect(service).toBeTruthy();
   });
 });
