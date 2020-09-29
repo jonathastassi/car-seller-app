@@ -9,6 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { NavigationComponent } from './navigation.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('NavigationComponent', () => {
   let component: NavigationComponent;
@@ -25,6 +26,7 @@ describe('NavigationComponent', () => {
         MatListModule,
         MatSidenavModule,
         MatToolbarModule,
+        HttpClientTestingModule,
         RouterTestingModule.withRoutes([])
       ]
     }).compileComponents();
